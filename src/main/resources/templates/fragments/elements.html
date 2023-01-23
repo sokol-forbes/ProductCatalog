@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles">
+    <meta charset="UTF-8"/>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+<div th:fragment="category_form">
+    <form th:action="@{/api/categories}" method="post">
+
+        <input name="id" type="hidden" th:value="${category?.id}">
+        Название категории: <input name="name" th:value="${category?.name}">
+        <button>Сохранить</button>
+    </form>
+</div>
+
+<div th:fragment="product_form">
+    <form th:action="@{/api/products}" method="post">
+
+        <input name="id" type="hidden" th:value="${product?.id}">
+        <input name="name" th:value="${product?.name}">
+        <input name="description" th:value="${product?.description}">
+        <select name="productCategoryId" required>
+            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
+                    th:selected="${category.id} == ${product?.productCategoryId}"></option>
+        </select>
+        <input name="price" th:value="${product?.price}">
+        <input name="remarkGeneral" th:value="${product?.remarkGeneral}">
+        <input name="remarkSpecial" th:value="${product?.remarkSpecial}">
+        <button>Сохранить</button>
+    </form>
+</div>
+</body>
+</html>
+

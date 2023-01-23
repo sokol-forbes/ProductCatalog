@@ -2,7 +2,6 @@ package com.academy.app.controller;
 
 import com.academy.app.dto.ProductCategoryDto;
 import com.academy.app.dto.converter.ProductCategoryConverter;
-import com.academy.app.entity.Product;
 import com.academy.app.entity.ProductCategory;
 import com.academy.app.service.ProductCategoryService;
 import lombok.NonNull;
@@ -25,13 +24,13 @@ public class ProductCategoryController {
     private ProductCategoryConverter converter;
 
     @PostMapping()
-    public String addProduct(
+    public String addCategory(
             ProductCategoryDto categoryDto
     ) {
         ProductCategory product = converter.getEntity(categoryDto);
         categoriesService.saveOrUpdate(product);
 
-        return "redirect:/api/products";
+        return "redirect:/api/categories";
     }
 
     @GetMapping()
@@ -46,7 +45,7 @@ public class ProductCategoryController {
     }
 
     @GetMapping("/{id}")
-    public String getProduct(
+    public String getCategory(
             @PathVariable Long id, Model model
     ) {
         ProductCategory product = categoriesService.findById(id);
@@ -56,7 +55,7 @@ public class ProductCategoryController {
     }
 
     @PostMapping("/delete")
-    public String deleteProduct(
+    public String deleteCategory(
             Long id,
             Model model
     ) {

@@ -1,6 +1,7 @@
 package com.academy.app.controller;
 
 
+
 import com.academy.app.dto.ProductDto;
 import com.academy.app.dto.converter.ProductConverter;
 import com.academy.app.entity.Product;
@@ -67,9 +68,12 @@ public class CatalogController {
                     .collect(Collectors.toList());
         }
 
+        List<ProductCategory> categories = categoriesService.findAll();
         List<ProductDto> catalogDto = productConverter.getDtoList(catalog);
+
         model.addAttribute("searchQuery", searchQuery);
         model.addAttribute("products", catalog);
+        model.addAttribute("categories", categories);
 
         return "catalog/catalog";
     }
@@ -94,3 +98,4 @@ public class CatalogController {
         return "redirect:/api/products?deleted=" + "true";
     }
 }
+

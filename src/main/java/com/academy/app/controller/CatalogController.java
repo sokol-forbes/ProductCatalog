@@ -94,4 +94,3 @@ public class CatalogController {
         return "redirect:/api/products?deleted=" + "true";
     }
 }
-

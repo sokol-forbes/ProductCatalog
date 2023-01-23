@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public abstract class GenericServiceImpl<T extends BaseEntity> implements CrudOperations<T> {
 
+
     @NonNull
     protected BaseRepo<T> repository;
 

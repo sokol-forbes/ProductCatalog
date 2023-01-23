@@ -8,11 +8,14 @@ import com.academy.app.repository.ProductCategoryRepository;
 import com.academy.app.repository.ProductRepository;
 import com.academy.app.service.ProductCategoryService;
 import lombok.NonNull;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
+@Service
 public class ProductCategoryServiceImpl extends GenericServiceImpl<ProductCategory> implements ProductCategoryService {
+
     private final ProductRepository productRepository;
 
     public ProductCategoryServiceImpl(

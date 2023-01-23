@@ -3,6 +3,7 @@ package com.academy.app.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -22,9 +23,15 @@ public class Product extends BaseEntity {
     private String remarkSpecial;
 
     public String getProductCategoryName() {
-        return productCategory.getName();
+        if (productCategory != null) {
+            return productCategory.getName();
+        }
+        return null;
     }
     public Long getProductCategoryId() {
-        return productCategory.getId();
+        if (productCategory != null) {
+            return productCategory.getId();
+        }
+        return null;
     }
 }
